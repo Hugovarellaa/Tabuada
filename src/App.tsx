@@ -15,34 +15,34 @@ interface User {
 
 type AuthContentxType = {
   user: User | undefined;
-  signInWithGoogle: ()=>void;
-}
+  signInWithGoogle: () => Promise<void>;
+};
 
 export function App() {
   const [user, setUser] = useState<User>();
 
-  function signInWithGoogle() {
+  async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
-    auth.signInWithPopup(provider).then((result) => {
-      if (result.user) {
-        const { displayName, photoURL, uid } = result.user;
+    const result = await auth.signInWithPopup(provider);
 
-        if (!displayName || !photoURL) {
-          throw new Error("missing information from google account.");
-        }
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL,
-        });
+    if (result.user) {
+      const { displayName, photoURL, uid } = result.user;
+
+      if (!displayName || !photoURL) {
+        throw new Error("missing information from google account.");
       }
-    });
-  } 
+      setUser({
+        id: uid, 
+        name: displayName,
+        avatar: photoURL,
+      });
+    }
+  }
   return (
     <BrowserRouter>
       <AuthContentx.Provider value={{ user, signInWithGoogle }}>
-        <Route path="/" exact={true} component={Home}  />
+        <Route path="/" exact={true} component={Home} />
         <Route path="/rooms/news" component={NewRoom} />
       </AuthContentx.Provider>
     </BrowserRouter>

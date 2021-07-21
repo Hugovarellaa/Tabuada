@@ -4,15 +4,21 @@ import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 import "../styles/auth.scss";
 import { Button } from "../components/Button";
-import { auth, firebase } from "../services/firebase";
+
+import { useContext } from "react";
+import { AuthContentx } from "../App";
 
 export function Home() {
   const history = useHistory();
+  const { signInWithGoogle, user } = useContext(AuthContentx);
 
-  function handleCreateRoom() {
+
+  async function handleCreateRoom() {
+    if(!user){
+      await signInWithGoogle()
+    }
     history.push("/rooms/news");
-    };
-  
+  }
 
   return (
     <div id="pages-auth">
