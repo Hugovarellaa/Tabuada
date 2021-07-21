@@ -16,6 +16,7 @@ export function NewRoom() {
         <p>Tire as dúvidas da sua audiencia em tempo-real</p>
       </aside>
       <main>
+        <h1></h1>
         <div className="main-content">
           <img src={logoImg} alt="logo letmeask" />
           <h2>Cria uma nova Sala</h2>
