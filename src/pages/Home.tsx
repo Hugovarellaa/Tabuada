@@ -12,8 +12,8 @@ export function Home(){
         <strong>Crie sala de Q&amp;A ao-vivo</strong>
         <p>Tire as dúvidas da sua audiencia em tempo-real</p>
       </aside>
-      <main>
-        <div>
+      <main >
+        <div className="main-content">
           <img src={logoImg} alt="logo letmeask" />
           <button>
             <img src={googleIconImg} alt="logo do google" />
