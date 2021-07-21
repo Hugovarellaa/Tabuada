@@ -1,8 +1,12 @@
-
 import { Home } from "./pages/Home";
+import { NewRoom } from "./services/NewRoom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export function App() {
   return (
-    <Home />
-  )
+    <BrowserRouter>
+      <Route path="/" exact component={Home}/> 
+      <Route path="/rooms/news" component={NewRoom}/> 
+    </BrowserRouter>
+  );
 }
