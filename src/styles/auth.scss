@@ -12,7 +12,21 @@
     justify-content: center;
 
     padding: 120px 80px;
+
+    img{
+      max-width:320px;
+    }
+
+    strong{
+      font: 700 36px 'Poppins', sans-serif;
+      line-height:42px;
+      margin-top: 16px;
+    }
+    p{
+      
+    }
   }
+
   main {
     flex: 8;
   }
